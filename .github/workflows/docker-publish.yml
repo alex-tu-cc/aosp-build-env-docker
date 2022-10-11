@@ -86,6 +86,6 @@ jobs:
           echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME-18.04 $IMAGE_ID:$VERSION
-          docker tag $IMAGE_NAME-18.04 $IMAGE_ID:focal
-          docker push $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:focal
+          #docker tag $IMAGE_NAME-18.04 $IMAGE_ID:bionic-testing
+          #docker push $IMAGE_ID:$VERSION
+          #docker push $IMAGE_ID:bionic
