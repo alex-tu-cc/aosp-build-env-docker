@@ -5,7 +5,7 @@ MAINTAINER Alex Tu "alex.tu@toasttab.com"
 # Set base environment
 # =============================================
 RUN apt-get update
-RUN apt-get install -y sudo openssl apt-utils
+RUN apt-get install -y openssl apt-utils
 
 WORKDIR /workdir
 
@@ -58,7 +58,7 @@ RUN apt-get update && apt-get install -y \
 RUN echo "cd /workdir"  >>  /home/${USER}/.bashrc
 
 # Update to latest
-RUN apt-get update && apt-get dist-upgrade -y && sudo apt-get clean
+RUN apt-get update && apt-get dist-upgrade -y && apt-get clean
 
 # The major duty of entry script is to sync the UID:GID between host and docker user.
 COPY docker-entrypoint.sh /usr/local/bin/
