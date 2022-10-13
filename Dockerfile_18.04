@@ -4,8 +4,7 @@ MAINTAINER Alex Tu "alex.tu@toasttab.com"
 # =============================================
 # Set base environment
 # =============================================
-RUN apt-get update
-RUN apt-get install -y openssl apt-utils
+RUN apt-get update && apt-get install -y openssl apt-utils
 
 WORKDIR /workdir
 
