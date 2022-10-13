@@ -41,18 +41,21 @@ RUN apt-get update && apt-get install -y \
 
 # AOSP, dependency that not be listed on websit (might because of docker)
 RUN apt-get update && apt-get install -y \
-    rsync python
+    rsync python3
 
 # Project dependency
 RUN apt-get update && apt-get install -y \
-    libswitch-perl libncurses5
+    python
 
 # =============================================
 # Prepare AOSP build environment
 # =============================================
 # ccache and change to /workdir which is bind from host.
-RUN apt-get update && apt-get install -y ccache
-RUN echo "export CCACHE_DIR=/ccache; export CCACHE_EXEC=/usr/bin/ccache; export USE_CCACHE=true; cd /workdir"  >>  /home/${USER}/.bashrc
+#RUN apt-get update && apt-get install -y ccache
+#RUN echo "export CCACHE_DIR=/ccache; export CCACHE_EXEC=/usr/bin/ccache; export USE_CCACHE=true; cd /workdir"  >>  /home/${USER}/.bashrc && \
+#RUN echo "cd /workdir"  >>  /home/${USER}/.bashrc && \
+#    ln -sf /usr/bin/python3 /usr/bin/python
+RUN echo "cd /workdir"  >>  /home/${USER}/.bashrc
 
 # Update to latest
 RUN apt-get update && apt-get dist-upgrade -y && sudo apt-get clean
