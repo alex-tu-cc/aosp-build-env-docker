@@ -21,10 +21,10 @@ sed -i -e "s/^${DOCKER_USER}:\([^:]*\):[0-9]*:[0-9]*/${DOCKER_USER}:\1:${HOST_US
 sed -i -e "s/^${DOCKER_USER}:\([^:]*\):[0-9]*/${DOCKER_USER}:\1:${HOST_USER_GID}/"  /etc/group
 chown ${HOST_USER_ID}:${HOST_USER_GID} /home/${DOCKER_USER} -R
 
-# allow user to run sudo
-adduser ${DOCKER_USER} sudo
+## allow user to run sudo
+#adduser ${DOCKER_USER} sudo
 
 #change to /workdir after login
-echo "cd /workdir" >> /home/${DOCKER_USER}/.bashrc
+echo "cd /workdir" > /home/${DOCKER_USER}/.bashrc
 
-su - "${DOCKER_USER}"
+su - "${DOCKER_USER}" -c bash
